@@ -1,0 +1,36 @@
+Language: English
+Hello, how are you?
+
+Language: Spanish
+Hola, ¿cómo estás?
+
+Language: French
+Bonjour, comment ça va?
+
+Language: German
+Hallo, wie geht es dir?
+
+Language: Portuguese
+Olá, como você está?
+
+Language: Português
+
+Olá, como vai você?
+
+Language: Italian
+Ciao, come stai?
+
+Language: Japanese
+こんにちは、お元気ですか？
+
+Language: Chinese (Simplified)
+你好，你好吗？
+
+Language: Russian
+Здравствуйте, как вы?
+
+Language: Arabic
+مرحبا، كيف حالك؟
+
+Language: Hindi
+नमस्ते, आप कैसे हैं?
