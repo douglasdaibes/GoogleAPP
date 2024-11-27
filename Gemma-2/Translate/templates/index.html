@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemma Language Tuning</title>
+    <style>
+body {
+    background-color: #161a31;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.logo {
+    width: 80px;  
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    background-color: #020e50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #263172;
+    color: #ffffff;
+}
+
+button {
+    background-color: #00d1b2;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #00b89c;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #020e50;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+}
+
+@media (max-width: 600px) {
+    textarea, select, button {
+        font-size: 14px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+}
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gemma Language Tuning</h1>
+
+    <form method="POST" action="/Translate">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="Logo" class="logo">
+        <h1>Aplicativo de Tradução</h1>
+    
+        <label for="text">Texto a ser traduzido:</label>
+        <textarea id="text" name="text" rows="5" cols="50" required placeholder="Digite o texto aqui..."></textarea>
+    
+        <label for="source_language">Idioma de origem:</label>
+        <select id="source_language" name="source_language" required>
+            <option value="auto" selected>Detectar automaticamente</option>
+            <option value="en">Inglês</option>
+            <option value="pt" selected>Português</option>
+            <option value="es">Espanhol</option>
+            <option value="fr">Francês</option>
+            <option value="de">Alemão</option>
+            <option value="de">Italino</option>
+            <option value="de">Jâpones</option>
+            <option value="de">Mandarim</option>
+            <option value="de">Koreano</option>
+            <option value="de">Russo</option>
+        </select>
+    
+        <label for="target_language">Idioma de destino:</label>
+        <select id="target_language" name="target_language" required>
+            <option value="pt" selected>Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+            <option value="fr">Francês</option>
+            <option value="de">Alemão</option>
+            <option value="de">Italino</option>
+            <option value="de">Jâpones</option>
+            <option value="de">Mandarim</option>
+            <option value="de">Koreano</option>
+            <option value="de">Russo</option>
+        </select>
+    
+        <button type="submit">Traduzir</button>
+    </form>
+
+    <form method="POST" action="/train" enctype="multipart/form-data">
+        <label for="file">Arquivo de treinamento (CSV):</label>
+        <input type="file" id="file" name="file" accept=".csv" required>
+
+        <label for="train_source_language">Idioma de origem:</label>
+        <select id="train_source_language" name="source_language" required>
+            <option value="en">Inglês</option>
+            <option value="pt" selected>Português</option>
+            <option value="es">Espanhol</option>
+            <option value="fr">Francês</option>
+            <option value="de">Alemão</option>
+            <option value="de">Italino</option>
+            <option value="de">Jâpones</option>
+            <option value="de">Mandarim</option>
+            <option value="de">Koreano</option>
+            <option value="de">Russo</option>
+        </select>
+
+        <label for="train_target_language">Idioma de destino:</label>
+        <select id="train_target_language" name="target_language" required>
+            <option value="pt" selected>Português</option>
+            <option value="en">Inglês</option>
+            <option value="es">Espanhol</option>
+            <option value="fr">Francês</option>
+            <option value="de">Alemão</option>
+            <option value="de">Italino</option>
+            <option value="de">Jâpones</option>
+            <option value="de">Mandarim</option>
+            <option value="de">Koreano</option>
+            <option value="de">Russo</option>
+        </select>
+
+        <button type="submit">Iniciar Ajuste Fino</button>
+    </form>
+
+    {% if training_status %}
+    <div class="result">
+        <h2>Status do Treinamento</h2>
+        <p>{{ training_status }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
